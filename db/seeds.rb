@@ -14,3 +14,4 @@ Product.destroy_all
    price: Faker::Commerce.price.to_i,
    photo: "https://picsum.photos/400/200?image=#{i + 1}")
 end
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
