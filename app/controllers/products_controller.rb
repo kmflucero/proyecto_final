@@ -4,8 +4,6 @@ class ProductsController < ApplicationController
 		if params[:buscar].present?
 			consulta = params[:buscar].capitalize
 			@products = Product.where('name like ?', "%#{consulta}%")
-		else
-			@products =Product.all
 		end
 	end
 	def create
@@ -15,6 +13,6 @@ class ProductsController < ApplicationController
 	end
 	private 
 	def product_params
-		params.require(:product).permit(:name, :photo, :price, :category_id, :inventory_id, :top)
+		params.require(:product).permit(:name, :photo, :price, :category_id, :top)
 	end
 end

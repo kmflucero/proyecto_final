@@ -26,6 +26,16 @@
       </ul>
     </div>
     <div class="col-md-7" style="padding-left: 0;">
+       <div style="border: solid 1px #b4a895; width:100%;">
+        <br>
+        <h5 style="padding-left: 10px;">estos productos deben estar escondidos, y deben aparecer cuando se haga una busqueda</h5>
+        <br>
+        
+      </div>
+      
+        <div class="row" id="products" style="margin-left: 15px;">
+  
+        </div> 
       <div id="accordion">
   <% @categories.each do |category| %>      
   <div class="card">
@@ -50,13 +60,13 @@
 <br>
       <div style="border: solid 1px #b4a895; width:100%;">
         <br>
-        <h1 style="padding-left: 10px;">Categoria 1</h1>
+        <h5 style="padding-left: 10px;">estos productos deben estar escondidos, y deben aparecer cuando se haga una busqueda</h5>
         <br>
         
       </div>
       
         <div class="row" id="products" style="margin-left: 15px;">
-          <%= render @products %>
+         
         </div> 
       
     </div>
@@ -77,6 +87,7 @@
 
 <script type="text/javascript">
   $('#buscar').keyup(function(){
+    console.log('hola')
     $.ajax({
         url: '<%= products_path%>',
         type: 'GET',

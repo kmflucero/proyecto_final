@@ -7,15 +7,16 @@
  <div class="collapse navbar-collapse" id="navbarNav">
    <ul class="navbar-nav ml-auto">
      <li class="nav-item">
-         <%= link_to "Carta", root_path, class: 'nav-link' %>
+
+         <%= link_to "Carta", root_path, class: 'nav-link ' %>
        </li>
      <% if user_signed_in? %>
       
        <li class="nav-item">
-         <%= link_to 'Mi Carrito', orders_path, class: 'nav-link' %>
+             <a href="<%= orders_path %>" class="nav-link"><i class="fas fa-shopping-cart"></i></a> 
        </li>
        <li class="nav-item">
-         <%= link_to 'Cerrar Sesion', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+         <%= link_to 'Salir', destroy_user_session_path, method: :delete, class: 'nav-link' %>
        </li>
      <% else %>
        <li class="nav-item">
