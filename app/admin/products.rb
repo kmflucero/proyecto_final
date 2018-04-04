@@ -13,4 +13,14 @@ ActiveAdmin.register Product do
 #   permitted
 # end
 
+form do |f|
+    f.inputs "productos" do
+      f.input :category, as: :select, collection: Category.all, :input_html => { :class => 'chzn-select', :width => 'auto', "data-placeholder" => 'Click' }
+      f.input :price
+      f.input :name
+      f.input :photo, :as => :file
+    end
+    f.actions
+  end
+  
 end

@@ -6,6 +6,7 @@ class User < ApplicationRecord
    has_many :orders, dependent: :destroy
    has_many :products, through: :orders
    has_many :billings
+ 
    def cart
      orders.where(payed: false)
    end

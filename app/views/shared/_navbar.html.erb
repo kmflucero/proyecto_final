@@ -13,7 +13,8 @@
      <% if user_signed_in? %>
       
        <li class="nav-item">
-             <a href="<%= orders_path %>" class="nav-link"><i class="fas fa-shopping-cart"></i></a> 
+
+             <a href="<%= orders_path %>" class="nav-link"><i class="fas fa-shopping-cart"></i><span class="badge badge-light"><%= Order.count %></span></a> 
        </li>
        <li class="nav-item">
          <%= link_to 'Salir', destroy_user_session_path, method: :delete, class: 'nav-link' %>

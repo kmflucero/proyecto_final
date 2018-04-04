@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
   def destroy
     @order = Order.find(params[:id])
     if @order.quantity==1
-      if @order.destroy?
+      if @order.destroy!
         redirect_to orders_path, notice: 'Carro actualizado'
       else
         redirect_to orders_path, notice: 'no se pudo actualizar'
@@ -32,6 +32,7 @@ class OrdersController < ApplicationController
   def create
     @previous_order= Order.find_by(user_id: current_user.id, product_id: params[:product_id], payed: false)
     if @previous_order.present?
+ 
       new_quantity = @previous_order.quantity + 1
       @previous_order.update(quantity: new_quantity)
       redirect_to root_path, notice: 'Se ha agregado orden con exito'
