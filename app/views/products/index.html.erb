@@ -6,8 +6,8 @@
 <div class="row">
   
 <div class="col-sm-3" style="padding-left: 40px; padding-right: 0;">
-      <h3><strong>Categorias</strong></h3>
-      <ul style="list-style: none;padding-left: 0;">
+      <h3><strong>Encuentra tu roll</strong></h3>
+      <ul style="list-style: none; padding-left: 0;">
         <li>
           <div class="input-group mb-3">
       <div class="input-group-prepend">
@@ -17,6 +17,7 @@
       </div>
       <input id="buscar" type="text" class="form-control" placeholder="Pollo, Palta..." aria-label="Username" aria-describedby="basic-addon1" style="margin-right: 35px;">
     </div class="text-center">
+      <h3><strong>Categorias</strong></h3>
         </li>
         <li>Categoria 1</li>
         <li>Categoria 2</li>
@@ -25,7 +26,7 @@
         <li>Categoria 5</li>
       </ul>
     </div>
-    <div class="col-md-7" style="padding-left: 0;">
+    <div class="col-md-6" style="padding-left: 0; max-width: 630px">
        <div style="border: solid 1px #b4a895; width:100%;">
         <br>
         <h5 style="padding-left: 10px;">estos productos deben estar escondidos, y deben aparecer cuando se haga una busqueda</h5>
@@ -33,10 +34,10 @@
         
       </div>
       
-        <div class="row" id="products" style="margin-left: 15px;">
+        <div class="row" id="products" width="650" style="margin-left: 15px;">
   
         </div> 
-      <div id="accordion">
+      <div id="accordion" style="width: 625px;">
   <% @categories.each do |category| %>      
   <div class="card">
     <div class="card-header" id="heading<%= category.id %>">
@@ -48,8 +49,8 @@
     </div>
 
     <div id="collapse<%= category.id %>" class="collapse show" aria-labelledby="heading<%= category.id %>" data-parent="#accordion">
-      <div class="card-body">
-        <div class="row">
+      <div class="card-body" style="padding:0;">
+        <div style="margin-left: 0px; display: flex; flex-wrap: wrap; margin-right: -5px; width: 650px;">
            <%= render category.products %>
         </div>
       </div>
@@ -70,25 +71,16 @@
         </div> 
       
     </div>
-    <div class="col-md-2">
-      <br>
-      <div style="background: grey; border: solid black; margin-left:50px; margin-right:5px;">
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </div>
-    </div>
-</div>
-</div>
+    <div class="col-md-3">
 
-
-<div id="cajita">
+<div id="cajita" style="border: 1px solid white;">
   <%= render 'orders/index', orders: @orders if @orders.present? %>
 </div>
+
+     
+</div>
+</div>
+
 
 <script type="text/javascript">
   $('#buscar').keyup(function(){
