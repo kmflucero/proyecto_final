@@ -85,6 +85,11 @@
 </div>
 </div>
 
+
+<div id="cajita">
+  <%= render 'orders/index', orders: @orders if @orders.present? %>
+</div>
+
 <script type="text/javascript">
   $('#buscar').keyup(function(){
     console.log('hola')
