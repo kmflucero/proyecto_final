@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 		def index
-		@orders = current_user.cart
+		
 		@categories = Category.all
 		if params[:buscar].present?
 			consulta = params[:buscar].capitalize

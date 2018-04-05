@@ -12,7 +12,17 @@ ActiveAdmin.register Product do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+index do
+  column :name
+  column :photo do |product|
+     image_tag product.photo.thumb
+   end
 
+  column :category
+  column :top
+  column :price
+  actions
+end
 form do |f|
     f.inputs "productos" do
       f.input :category, as: :select, collection: Category.all, :input_html => { :class => 'chzn-select', :width => 'auto', "data-placeholder" => 'Click' }
@@ -24,3 +34,4 @@ form do |f|
   end
   
 end
+

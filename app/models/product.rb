@@ -4,5 +4,5 @@ class Product < ApplicationRecord
   has_many :users, through: :orders
   belongs_to :category
   mount_uploader :photo, ImageUploader
-
+ 
 end

@@ -14,6 +14,12 @@
  *= require_self
  */
 
+
+.my_image_size {
+  width: 50px;
+  height: 50px;
+}
+
 *{
 	margin: 0;
 	padding: 0;
