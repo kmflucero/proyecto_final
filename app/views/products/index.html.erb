@@ -4,8 +4,11 @@
 <div class="container-fluid">
   
 <div class="row">
+
   
 <div class="col-sm-3" style="padding-left: 40px; padding-right: 0;">
+  <div id="demo"> </div>
+<button onclick="getLocation()">Try It</button>
       <h3><strong>Encuentra tu roll</strong></h3>
       <ul style="list-style: none; padding-left: 0;">
         <li>
@@ -99,5 +102,18 @@
     });
 
   });
+
+  var x = document.getElementById("demo");
+function getLocation() {
+ if (navigator.geolocation) {
+ navigator.geolocation.getCurrentPosition(showPosition);
+ } else {
+ x.innerHTML = "Geolocation is not supported by this browser.";
+ }
+}
+function showPosition(position) {
+ x.innerHTML = "Latitude: " + position.coords.latitude +
+ "<br>Longitude: " + position.coords.longitude;
+}
   </script>
   <hr>

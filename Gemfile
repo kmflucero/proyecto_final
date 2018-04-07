@@ -24,7 +24,8 @@ gem 'groupdate'
 gem 'activeadmin'
 # Plus integrations with:
 gem 'cancancan'
-
+gem 'gmaps4rails'
+gem 'geocoder'
 gem 'faker'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

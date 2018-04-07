@@ -97,8 +97,10 @@ GEM
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
+    geocoder (1.4.7)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    gmaps4rails (2.1.2)
     groupdate (4.0.0)
       activesupport (>= 4.2)
     has_scope (0.7.1)
@@ -260,6 +262,8 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   faker
+  geocoder
+  gmaps4rails
   groupdate
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)

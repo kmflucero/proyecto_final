@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  get 'geocoder/findaddress'
+
   get 'pages/index'
 
   get 'pages/about'
 
   get 'pages/contact'
+  resources :stores
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

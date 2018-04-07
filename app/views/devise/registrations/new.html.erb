@@ -1,50 +1,92 @@
+<div class="col-md-4 offset-md-4" style="border: 1px solid red; background-color: black; ">
+  
+<div style="padding: 15px;">
 <h2>Sign up</h2>
-
+  
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control' %>
   </div>
-
+<br />
+    <div class="form-group">
+ <%= f.label :address %>
+ <div class="row">
+ <div class="col-md-10">
+ <%= f.text_field :address, class: 'form-control'%>
+ </div>
+ <div class="col-md-2">
+ <%= link_to "#", class:"btn btn-success", id: "get_location" do %>
+ <i class="fa fa-map-marker"> </i>
+ <% end %>
+ </div>
+ </div>
+ </div>
+  <br />
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :street %><br />
-    <%= f.text_field :street, autofocus: true, autocomplete: "name" %>
-  </div>
-  <div class="field">
-    <%= f.label :province %><br />
-    <%= f.text_field :province, autofocus: true, autocomplete: "name" %>
-  </div>
-  <div class="field">
-    <%= f.label 'apartment number' %><br />
-    <%= f.text_field :apartment, autofocus: true, autocomplete: "apartment" %>
-  </div>
+  <br />
   <div class="field">
     <%= f.label 'phone number' %><br />
-    <%= f.text_field :phone, autofocus: true, autocomplete: "apartment" %>
+    <%= f.text_field :phone, autofocus: true, autocomplete: "apartment", class: 'form-control' %>
   </div>
-
+  <br />
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
   </div>
-
+  <br />
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
   </div>
-
+<br>
   <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+    <%= f.submit "Sign up", class:'btn btn-danger' %>
 <% end %>
+</div>
+  </div>
 
 <%= render "devise/shared/links" %>
+</div>
+
+<script>
+  $("#get_location").on('click', function(event){
+  $(this).html('<i class="fa fa-spinner fa-spin"> </i>')
+ event.preventDefault();
+
+ if (navigator.geolocation) {
+ navigator.geolocation.getCurrentPosition(getAddress);
+ } else {
+ x.innerHTML = "Geolocation is not supported by this browser.";
+ }
+});
+
+function getAddress(position) {
+  var latitude = position.coords.latitude;
+  var longitude = position.coords.longitude;
+  $.ajax({
+      url: '/geocoder/findaddress',
+      type: 'GET',
+      dataType: 'script',
+      data: {latitude: latitude, longitude: longitude}
+    })
+
+  .done(function() {
+    console.log('success');
+  })
+  .fail(function() {
+    console.log('error');
+  })
+   .always(function() {
+     $('#get_location').html('<i class="fa fa-map-marker"> </i>')
+  })
+} 
+</script>

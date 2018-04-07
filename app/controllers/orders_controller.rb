@@ -14,27 +14,29 @@ class OrdersController < ApplicationController
   def destroy
     @order = Order.find(params[:id])
     if @order.quantity==1
-     @order.destroy!
-
+      @order.destroy!
     elsif @order.quantity > 1
       @order.quantity -= 1
       @order.save
+      
     end
   end
 
   def create
-    @orders = current_user.cart
+      @orders = Order.all
+      @order = Order.new
     @previous_order= Order.find_by(user_id: current_user.id, product_id: params[:product_id], payed: false)
     if @previous_order.present?
       new_quantity = @previous_order.quantity + 1
       @previous_order.update(quantity: new_quantity)
+      
     else
-      @order = Order.new
       @product = Product.find(params[:product_id])
       @order.product = @product
       @order.price =  @product.price
       @order.user = current_user
       @order.save
+       
     end
   end
 end
