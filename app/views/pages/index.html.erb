@@ -1,10 +1,18 @@
 
+  <div class="jumbotron jumbotron-fluid" style="background: url(<%= asset_path 'madera2.jpg' %>); background-size: 100vw 100vh; background-attachment: fixed;">
+  <div class="container">
+    <h1 class="display-4">¡ Ya inaguramos !</h1>
+    <p class="lead text-center">Estas listo para probar el sushi mas rico del universo?</p>
+  </div>
+</div>
+
 <main>
 	<div class="container">
 		
-	<h1>Lo mejor en comida internacional</h1>
+	<h1></h1>
 
-	<div class="fila">
+
+	<div class="fila ">
 		<div class="columna-1-3">
 			<div class="small">
 				<p style="color:#fff;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -15,13 +23,13 @@
 				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 			</div>
 			<div class="small">
-				<%= image_tag "portada.jpg" %>	
+				<%= image_tag "fondoportada.jpg" %>	
 			</div>
 		</div>
 		<div class="columna-2-3">
 			<div class="normal cosa">
 				  <% if user_signed_in? %>
-				  <%= image_tag "portada.jpg" %>
+				  <%= image_tag "fondoportada.jpg" %>
 			<div class="bienvenida">
 				<h4>Bienvenido <%= link_to current_user.name, edit_user_registration_path , class: 'nav-link' %></h4>
 			</div>
@@ -29,19 +37,33 @@
 			  <div class="bienvenida">
 				<h4>Bienvenido a nuestra tienda</h4>
 			</div>
-				<%= image_tag "portada.jpg" %>
+				<%= image_tag "vsv.jpg" %>
 			</div>
 			<% end%>
+
+
 		</div>
 	</div>
-	<div class="fila">
+</main>
+	<div class="container">
+		<br>
+		<hr>
 		
+			<h2>Nuestras nuevas creaciones</h2>
+		<div class="row">
+			
+<% @products.each do |product| %> 
+  <% if product.top? %>
+  <%= render product %>
+  <% end %>
+<% end %>
+		</div>
 	</div>
-	</div>
+
 
 
 	
-</main>
+
 <div class="jumbotron jumbotron-fluid" style="background-color: black; border-top: 1px solid #fff;  border-bottom: 1px solid #fff; ">
   <div class="container">
     <h1 class="display-4">Fluid jumbotron</h1>
@@ -52,11 +74,7 @@
   	<div id="map" style='width: 800px; height: 400px;'></div>
   </div>
 </div>
-<% @products.each do |product| %> 
-  <% if product.top? %>
-  <%= render product %>
-  <% end %>
-<% end %>
+
 
 
 <script>

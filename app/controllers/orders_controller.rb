@@ -24,6 +24,7 @@ class OrdersController < ApplicationController
 
   def create
       @orders = Order.all
+        @total = @orders.inject(0) {|total, order| total += (order.product.price * order.quantity) }
       @order = Order.new
     @previous_order= Order.find_by(user_id: current_user.id, product_id: params[:product_id], payed: false)
     if @previous_order.present?

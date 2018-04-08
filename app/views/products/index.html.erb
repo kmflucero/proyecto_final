@@ -1,4 +1,9 @@
-<h2>Carrito de compra</h2><br><hr style="background:#b4a895;">
+  <div class="jumbotron jumbotron-fluid" style="background: url(<%= asset_path 'madera2.jpg' %>); background-size: 100vw 100vh; background-attachment: fixed;">
+  <div class="container">
+    <h1 class="text-center">Nuestra carta</h1>
+  </div>
+</div>
+
 
 
 <div class="container-fluid">
@@ -7,8 +12,8 @@
 
   
 <div class="col-sm-3" style="padding-left: 40px; padding-right: 0;">
-  <div id="demo"> </div>
-<button onclick="getLocation()">Try It</button>
+  
+
       <h3><strong>Encuentra tu roll</strong></h3>
       <ul style="list-style: none; padding-left: 0;">
         <li>
@@ -31,9 +36,7 @@
     </div>
     <div class="col-md-6" style="padding-left: 0; max-width: 630px">
        <div style="border: solid 1px #b4a895; width:100%;">
-        <br>
-        <h5 style="padding-left: 10px;">estos productos deben estar escondidos, y deben aparecer cuando se haga una busqueda</h5>
-        <br>
+        
         
       </div>
       
@@ -42,10 +45,10 @@
         </div> 
       <div id="accordion" style="width: 625px;">
   <% @categories.each do |category| %>      
-  <div class="card">
-    <div class="card-header" id="heading<%= category.id %>">
+  <div class="card" style="border: 1px solid grey; border-radius: 0;">
+    <div class="card-header" id="heading<%= category.id %>" style="background: -webkit-linear-gradient(-45deg, rgba(76,76,76,1) 0%,rgba(89,89,89,1) 12%,rgba(102,102,102,1) 25%,rgba(71,71,71,1) 39%,rgba(44,44,44,1) 58%,rgba(0,0,0,1) 89%,rgba(28,28,28,1) 91%,rgba(0,0,0,1) 92%,rgba(0,0,0,1) 92%,rgba(17,17,17,1) 97%,rgba(17,17,17,1) 97%,rgba(43,43,43,1) 99%,rgba(19,19,19,1) 100%); border-radius: 0; ">
       <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse<%= category.id %>" aria-expanded="true" aria-controls="collapse<%= category.id %>">
+        <button class="btn " data-toggle="collapse" data-target="#collapse<%= category.id %>" aria-expanded="true" aria-controls="collapse<%= category.id %>" style="background-color: transparent; font-weight: 400; box-shadow: 0 0 0 0.2rem transparent; border-radius: 0;">
           <%= category.name %>
         </button>
       </h5>
@@ -63,8 +66,7 @@
 </div>
 <br>
       <div style="border: solid 1px #b4a895; width:100%;">
-        <br>
-        <h5 style="padding-left: 10px;">estos productos deben estar escondidos, y deben aparecer cuando se haga una busqueda</h5>
+        
         <br>
         
       </div>
@@ -76,13 +78,14 @@
     </div>
     <div class="col-md-3">
 
-<div id="cajita" style="border: 1px solid white;">
+<div class="cajita" style="border: 1px solid white;">
   <%= render 'orders/index', orders: @orders if @orders.present? %>
 </div>
 
      
 </div>
 </div>
+
 
 
 <script type="text/javascript">
