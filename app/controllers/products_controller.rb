@@ -1,8 +1,9 @@
 class ProductsController < ApplicationController
 	 before_action :authenticate_user!
 
-		def index
-		
+	def index
+		@orders = Order.all
+		@total = @orders.inject(0) {|total, order| total += (order.product.price * order.quantity) }
 		@categories = Category.all
 		if params[:buscar].present?
 			consulta = params[:buscar].capitalize

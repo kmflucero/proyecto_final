@@ -17,9 +17,7 @@
              <%= link_to 'Locales', stores_path, class: 'nav-link' %>
             </li>
              <% if user_signed_in? %>
-            <li class="nav-item">
-             <a href="<%= orders_path %>" class="nav-link"><i class="fas fa-shopping-cart"></i><span class="badge badge-light"><%= Order.count %></span></a> 
-            </li>
+            
             <li class="nav-item">
               <a class="nav-link disabled" href="#">Disabled</a>
             </li>
@@ -33,6 +31,9 @@
             </li>
           </ul>
           <form class="form-inline my-2 my-md-0">
+              <li class="nav-item">
+             <a href="#" class="nav-link"><i class="fas fa-shopping-cart"></i><span id="conteo" class="badge badge-light"><%= Order.count %></span></a> 
+            </li>
             <li class="nav-item">
          <%= link_to 'Salir', destroy_user_session_path, method: :delete, class: 'nav-link' %>
        </li>

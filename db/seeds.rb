@@ -9,8 +9,8 @@
 
 15.times do |i|
 	Order.create(
-		user_id: 15 + i,
-		product_id: 100 + i,
+		user: 15 + i,
+		product: 100 + i,
 		price: product.price,
 		quantity: 1,
 		payed: false
@@ -19,8 +19,8 @@ end
 
 5.times do |i|
 	Order.create(
-		user_id: 15 + i,
-		product_id: 100 + i,
+		user: 15 + i,
+		product: 100 + i,
 		price: product.price,
 		quantity: 1,
 		payed: true

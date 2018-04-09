@@ -1,90 +1,71 @@
-  <div class="jumbotron jumbotron-fluid" style="background: url(<%= asset_path 'madera2.jpg' %>); background-size: 100vw 100vh; background-attachment: fixed;">
+<div class="jumbotron jumbotron-fluid" style="background: url(<%= asset_path 'madera2.jpg' %>); background-size: 100vw 100vh; background-attachment: fixed;">
   <div class="container">
     <h1 class="text-center">Nuestra carta</h1>
   </div>
 </div>
-
-
-
 <div class="container-fluid">
-  
-<div class="row">
-
-  
-<div class="col-sm-3" style="padding-left: 40px; padding-right: 0;">
-  
-
-      <h3><strong>Encuentra tu roll</strong></h3>
-      <ul style="list-style: none; padding-left: 0;">
-        <li>
-          <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">
-          <i class="fas fa-search"></i>
-        </span>
+  <div class="row">
+  <div class="col-sm-3" style="padding-left: 40px; padding-right: 0;">
+        <h3><strong>Encuentra tu roll</strong></h3>
+        <ul style="list-style: none; padding-left: 0;">
+          <li>
+            <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">
+            <i class="fas fa-search"></i>
+          </span>
+        </div>
+        <input id="buscar" type="text" class="form-control" placeholder="Pollo, Palta..." aria-label="Username" aria-describedby="basic-addon1" style="margin-right: 35px;">
+      </div class="text-center">
+        <h3><strong>Categorias</strong></h3>
+          </li>
+          <li>Categoria 1</li>
+          <li>Categoria 2</li>
+          <li>Categoria 3</li>
+          <li>Categoria 4</li>
+          <li>Categoria 5</li>
+        </ul>
       </div>
-      <input id="buscar" type="text" class="form-control" placeholder="Pollo, Palta..." aria-label="Username" aria-describedby="basic-addon1" style="margin-right: 35px;">
-    </div class="text-center">
-      <h3><strong>Categorias</strong></h3>
-        </li>
-        <li>Categoria 1</li>
-        <li>Categoria 2</li>
-        <li>Categoria 3</li>
-        <li>Categoria 4</li>
-        <li>Categoria 5</li>
-      </ul>
-    </div>
-    <div class="col-md-6" style="padding-left: 0; max-width: 630px">
-       <div style="border: solid 1px #b4a895; width:100%;">
-        
-        
+      <div class="col-md-6" style="padding-left: 0; max-width: 630px">
+         <div style="border: solid 1px #b4a895; width:100%;">
+        </div>
+          <div class="row" id="products" width="650" style="margin-left: 15px;">
+          </div> 
+        <div id="accordion" style="width: 625px;">
+    <% @categories.each do |category| %>      
+    <div class="card" style="border: 1px solid grey; border-radius: 0;">
+      <div class="card-header" id="heading<%= category.id %>" style="background: -webkit-linear-gradient(-45deg, rgba(76,76,76,1) 0%,rgba(89,89,89,1) 12%,rgba(102,102,102,1) 25%,rgba(71,71,71,1) 39%,rgba(44,44,44,1) 58%,rgba(0,0,0,1) 89%,rgba(28,28,28,1) 91%,rgba(0,0,0,1) 92%,rgba(0,0,0,1) 92%,rgba(17,17,17,1) 97%,rgba(17,17,17,1) 97%,rgba(43,43,43,1) 99%,rgba(19,19,19,1) 100%); border-radius: 0; ">
+        <h5 class="mb-0">
+          <button class="btn " data-toggle="collapse" data-target="#collapse<%= category.id %>" aria-expanded="true" aria-controls="collapse<%= category.id %>" style="background-color: transparent; font-weight: 400; box-shadow: 0 0 0 0.2rem transparent; border-radius: 0;">
+            <%= category.name %>
+          </button>
+        </h5>
       </div>
-      
-        <div class="row" id="products" width="650" style="margin-left: 15px;">
-  
-        </div> 
-      <div id="accordion" style="width: 625px;">
-  <% @categories.each do |category| %>      
-  <div class="card" style="border: 1px solid grey; border-radius: 0;">
-    <div class="card-header" id="heading<%= category.id %>" style="background: -webkit-linear-gradient(-45deg, rgba(76,76,76,1) 0%,rgba(89,89,89,1) 12%,rgba(102,102,102,1) 25%,rgba(71,71,71,1) 39%,rgba(44,44,44,1) 58%,rgba(0,0,0,1) 89%,rgba(28,28,28,1) 91%,rgba(0,0,0,1) 92%,rgba(0,0,0,1) 92%,rgba(17,17,17,1) 97%,rgba(17,17,17,1) 97%,rgba(43,43,43,1) 99%,rgba(19,19,19,1) 100%); border-radius: 0; ">
-      <h5 class="mb-0">
-        <button class="btn " data-toggle="collapse" data-target="#collapse<%= category.id %>" aria-expanded="true" aria-controls="collapse<%= category.id %>" style="background-color: transparent; font-weight: 400; box-shadow: 0 0 0 0.2rem transparent; border-radius: 0;">
-          <%= category.name %>
-        </button>
-      </h5>
-    </div>
 
-    <div id="collapse<%= category.id %>" class="collapse show" aria-labelledby="heading<%= category.id %>" data-parent="#accordion">
-      <div class="card-body" style="padding:0;">
-        <div style="margin-left: 0px; display: flex; flex-wrap: wrap; margin-right: -5px; width: 650px;">
-           <%= render category.products %>
+      <div id="collapse<%= category.id %>" class="collapse show" aria-labelledby="heading<%= category.id %>" data-parent="#accordion">
+        <div class="card-body" style="padding:0;">
+          <div style="margin-left: 0px; display: flex; flex-wrap: wrap; margin-right: -5px; width: 650px;">
+             <%= render category.products %>
+          </div>
         </div>
       </div>
     </div>
+  <% end %>
   </div>
-<% end %>
-</div>
-<br>
-      <div style="border: solid 1px #b4a895; width:100%;">
-        
-        <br>
-        
+  <br>
+          <div class="row" id="products" style="margin-left: 15px;">
+          </div> 
       </div>
-      
-        <div class="row" id="products" style="margin-left: 15px;">
-         
-        </div> 
-      
-    </div>
     <div class="col-md-3">
-
-<div class="cajita" style="border: 1px solid white;">
-  <%= render 'orders/index', orders: @orders if @orders.present? %>
+      
+      <div class="cajita" style="border: 1px solid white;">
+        <%= render 'orders/index', orders: @orders if @orders.present? %>
+      </div> 
+   
+    </div>
+  </div>
 </div>
 
-     
-</div>
-</div>
 
 
 
