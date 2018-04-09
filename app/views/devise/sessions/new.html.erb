@@ -1,15 +1,32 @@
-<h2>Log in</h2>
-
+<div class="col-md-4 offset-md-4" style="border: 1px solid white; background-color: black; border-radius: 10px; ">
+<div style="padding: 15px;">
+<h2>Estoy Registrado!</h2>
+<h5>Quiero entrar de inmediato</h5>
+<div style="color:black;">
+  
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",class:'form-control' %>
   </div>
 
   <div class="field">
     <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, autocomplete: "off",class:'form-control' %>
   </div>
+  <div class="form-group">
+ <%= f.label :address %>
+ <div class="row">
+ <div class="col-md-10">
+ <%= f.text_field :address, class: 'form-control'%>
+ </div>
+ <div class="col-md-2">
+ <%= link_to "#", class:"btn btn-success", id: "get_location" do %>
+ <i class="fa fa-map-marker"> </i>
+ <% end %>
+ </div>
+ </div>
+ </div>
 
   <% if devise_mapping.rememberable? -%>
     <div class="field">
@@ -17,10 +34,46 @@
       <%= f.label :remember_me %>
     </div>
   <% end -%>
-
+<br>
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in", class:'btn btn-danger' %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
+</div>
+</div>
+<script>
+  $("#get_location").on('click', function(event){
+  $(this).html('<i class="fa fa-spinner fa-spin"> </i>')
+ event.preventDefault();
+
+ if (navigator.geolocation) {
+ navigator.geolocation.getCurrentPosition(getAddress);
+ } else {
+ x.innerHTML = "Geolocation is not supported by this browser.";
+ }
+});
+
+function getAddress(position) {
+  var latitude = position.coords.latitude;
+  var longitude = position.coords.longitude;
+  $.ajax({
+      url: '/geocoder/findaddress',
+      type: 'GET',
+      dataType: 'script',
+      data: {latitude: latitude, longitude: longitude}
+    })
+
+  .done(function() {
+    console.log('success');
+  })
+  .fail(function() {
+    console.log('error');
+  })
+   .always(function() {
+     $('#get_location').html('<i class="fa fa-map-marker"> </i>')
+  })
+} 
+</script>

@@ -1,11 +1,13 @@
 class ProductsController < ApplicationController
-		def index
+	 before_action :authenticate_user!
+
+	def index
+		@orders = Order.all
+		@total = @orders.inject(0) {|total, order| total += (order.product.price * order.quantity) }
 		@categories = Category.all
 		if params[:buscar].present?
 			consulta = params[:buscar].capitalize
 			@products = Product.where('name like ?', "%#{consulta}%")
-		else
-			@products =Product.all
 		end
 	end
 	def create
@@ -15,6 +17,6 @@ class ProductsController < ApplicationController
 	end
 	private 
 	def product_params
-		params.require(:product).permit(:name, :photo, :price, :category_id)
+		params.require(:product).permit(:name, :photo, :price, :category_id, :top)
 	end
 end

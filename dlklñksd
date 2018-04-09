@@ -1,0 +1,53 @@
+[33mcommit fc7edb8e804b0354ae257adf5e62991b132fd99b[m[33m ([m[1;36mHEAD -> [m[1;32mkevin2-branch[m[33m)[m
+Author: kmflucero <kevin.lucero@gmail.com>
+Date:   Thu Apr 5 20:25:36 2018 -0300
+
+    comienzo repo kevin
+
+[33mcommit 65949a4771d078338afd268e4e41aadd1bf055d4[m[33m ([m[1;31morigin/kevin2-branch[m[33m)[m
+Author: kmflucero <kevin.lucero@gmail.com>
+Date:   Wed Apr 4 12:19:56 2018 -0300
+
+    mejoras visuales
+
+[33mcommit d6955eb9740da378a4dd4ae68145949716decc6d[m
+Author: kmflucero <kevin.lucero@gmail.com>
+Date:   Tue Apr 3 23:13:58 2018 -0300
+
+    orden por ajax en product
+
+[33mcommit 8a1b1f9d194f398287e1fc13b9c078af796a7787[m
+Author: kmflucero <kevin.lucero@gmail.com>
+Date:   Tue Apr 3 21:19:58 2018 -0300
+
+    agregue carrierwave a model product
+
+[33mcommit 4dfa4bba39f75cc4cbee1d791bc3d3c7fa6566e2[m
+Author: kmflucero <kevin.lucero@gmail.com>
+Date:   Mon Apr 2 20:47:17 2018 -0300
+
+    nuevo avance buscador
+
+[33mcommit 00469b03422ac91d37d8879a682b5a734b5526d6[m[33m ([m[1;31morigin/kevin-branch[m[33m, [m[1;32mkevin-branch[m[33m)[m
+Author: kmflucero <kevin.lucero@gmail.com>
+Date:   Mon Apr 2 03:42:30 2018 -0300
+
+    primer avance visual
+
+[33mcommit 06e7972798ebc85075c36e65a628bf1f2aa7767d[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: kmflucero <kevin.lucero@gmail.com>
+Date:   Sun Apr 1 13:36:28 2018 -0300
+
+    super commit
+
+[33mcommit 5a85abd6286ccfcccfcbcfd580c769e7dd96198f[m
+Author: kmflucero <kevin.lucero@gmail.com>
+Date:   Sun Apr 1 13:05:53 2018 -0300
+
+    active admin con categorias
+
+[33mcommit 3df51e6389fea80f6700b73b581a94997d4dbdf7[m
+Author: daniel yanez <danielyanezavila@gmail.com>
+Date:   Tue Mar 13 16:19:51 2018 -0300
+
+    carro de compras hasta billing

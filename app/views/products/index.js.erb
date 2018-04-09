@@ -1,1 +1,2 @@
-$("#products").html("<%= j render @products %>");
+$("#products").html("");
+$("#products").html("<%= j render @products unless @products.nil? %>");

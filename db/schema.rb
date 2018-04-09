@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180401153507) do
+ActiveRecord::Schema.define(version: 20180407070616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20180401153507) do
   create_table "billings", force: :cascade do |t|
     t.string "code"
     t.string "payment_method"
-    t.decimal "amount", precision: 5, scale: 2
+    t.decimal "amount", precision: 10, scale: 2
     t.string "currency"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -62,6 +62,17 @@ ActiveRecord::Schema.define(version: 20180401153507) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "inventories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "inventories_products", id: false, force: :cascade do |t|
+    t.bigint "inventory_id", null: false
+    t.bigint "product_id", null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -86,7 +97,20 @@ ActiveRecord::Schema.define(version: 20180401153507) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id"
+    t.bigint "inventory_id"
+    t.boolean "top"
+    t.string "image"
     t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["inventory_id"], name: "index_products_on_inventory_id"
+  end
+
+  create_table "stores", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -107,6 +131,9 @@ ActiveRecord::Schema.define(version: 20180401153507) do
     t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.string "address"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -116,4 +143,5 @@ ActiveRecord::Schema.define(version: 20180401153507) do
   add_foreign_key "orders", "products"
   add_foreign_key "orders", "users"
   add_foreign_key "products", "categories"
+  add_foreign_key "products", "inventories"
 end

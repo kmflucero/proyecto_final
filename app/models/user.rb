@@ -6,6 +6,9 @@ class User < ApplicationRecord
    has_many :orders, dependent: :destroy
    has_many :products, through: :orders
    has_many :billings
+   geocoded_by :address
+   after_validation :geocode
+ 
    def cart
      orders.where(payed: false)
    end
